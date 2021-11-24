@@ -1,5 +1,7 @@
-<?php 
 
+<link rel="stylesheet" href="CSS/main.css" type="text/css">
+
+<?php 
 // on inclu tous les modeles pour pas avoir a le faire apres... 
 foreach (glob("./model/*.php") as $filename) {
     include $filename;
@@ -22,7 +24,13 @@ if (file_exists("./controller/" . $URL[0] . ".php")){
     // On fait apparraitre notre page qui correspondra au premier truc apres le /
     require_once("./controller/" . $URL[0] . ".php");
 }else {
-    require_once("./view/404.php");
+    if ($URL[0] == '' || $URL[0] == null){
+        require_once("./controller/home.php");
+    }
+    else
+    {
+        require_once("./view/404.php");
+    }
 }
 
 

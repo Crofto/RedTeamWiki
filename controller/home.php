@@ -1,12 +1,5 @@
 <?php
 
-echo "controller/home.php";
-
-
-/// attention a supprimer, là juste pour reset au cas où********************
-//$_SESSION['Panier'] = new Panier;
-
-
 if ( isset($_POST['ajoutePanier'])){
     $_SESSION['Panier']->addProduit( Produit::fetchProduit($conn, $_POST['ajoutePanier']) ) ;
     header('Location: '.$_SERVER['REQUEST_URI']); // pour refresh le header

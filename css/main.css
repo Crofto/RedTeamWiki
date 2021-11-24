@@ -1,0 +1,28 @@
+body {
+    color: #6C7778;
+    font-family: Helvetica;
+    font-weight: lighter;
+}
+
+#g {
+    text-align: center;
+    margin: 30px 0;
+}
+#o {
+    width: 60%;
+    margin: auto;
+    text-align: left;
+}
+#notFound1, #notFound2, #notFound3 {
+    margin: 10px 0;
+}
+#notFound1 {
+    font-size: 5em;
+}
+#notFound2 {
+    font-size: 3em;
+    line-height: 1em;
+}
+#notFound3 {
+    font-size: 1.5em;
+}

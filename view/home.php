@@ -1,10 +1,6 @@
 
 <?php
 
-echo "view/home.php";
-
-
-
 echo "<form method=\"post\">" ;
 
 foreach($listProduit as $prod){
