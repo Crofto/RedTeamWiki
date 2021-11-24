@@ -1,6 +1,5 @@
 <?php
 
-include("./model/Produit.php");
 
 class Panier{
     public $produits = array();
@@ -8,20 +7,59 @@ class Panier{
     public function addProduit(Produit $prod){
         array_push($this->produits, $prod);
     }
+
+    public function addProduitId(int $id){
+        $prodAjout = null;
+        foreach ($this->produits as $prod){
+            if ( $prod->id == $id){
+                $prodAjout = $prod;
+                break;
+            }
+        }
+        if ($prodAjout != null)
+            array_push($this->produits, $prodAjout);
+        else
+            echo "wtf";
+    }
     
     public function removeProduit(Produit $prod){
-        $index = array_search($prod, $this->produits);
-        \array_splice($produits, $index, $index);
-    }
-
-    public function clearProduit(Produit $prod){
-        $index = array_search($prod, $this->produits);
-        while ($index>=0){
-            \array_splice($produits, $index, $index);
-            $index = array_search($prod, $this->produits);
+        if (in_array($prod, $this->produits)){
+            $index = array_search($prod, $this->produits);     
+            unset($this->produits[$index]);
         }
     }
 
+    public function removeProduitId(int $id){
+        $prodRecherche = null;
+        foreach ($this->produits as $prod){
+            if ( $prod->id == $id){
+                $prodRecherche = $prod;
+                break;
+            }
+        }
+        if ($prodRecherche != null)
+            $this->removeProduit($prodRecherche);
+        else
+            echo "wtf";
+    }
+
+    public function clearProduit(Produit $prod){
+        while (in_array($prod, $this->produits)){
+            $index = array_search($prod, $this->produits);
+            unset($this->produits[$index]);
+        }
+    }
+
+    public function clearProduitId(int $id){
+        foreach ($this->produits as $prod){
+            if ( $prod->id == $id){
+                $prodRecherche = $prod;
+                break;
+            }
+        }
+        $this->clearProduit($prodRecherche);
+    }
+ 
     public function getSousTotal(){
         $total = 0;
         foreach($this->produits as $prod){

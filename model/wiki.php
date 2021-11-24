@@ -1,6 +1,4 @@
 <?php
-
-    include("config.php");
     class manipulationBDD
     {
         // Méthode pour ajouter une ressource avec image dans la BDD

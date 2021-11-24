@@ -1,15 +1,23 @@
-
 <?php
-
-include("./model/Panier.php");
 
 echo "controller/home.php";
 
-$_SESSION['test'] = 42 ;
-$_SESSION['Panier'] = new Panier;
-$produit1 = new Produit(1, "produit1", 12, "ma description");
-$produit2 = new Produit(2, "produit2", 10, "ma description2");
-array_push($_SESSION['Panier']->produits, $produit1, $produit2);
+
+/// attention a supprimer, là juste pour reset au cas où********************
+//$_SESSION['Panier'] = new Panier;
+
+
+if ( isset($_POST['ajoutePanier'])){
+    $_SESSION['Panier']->addProduit( Produit::fetchProduit($conn, $_POST['ajoutePanier']) ) ;
+    header('Location: '.$_SERVER['REQUEST_URI']); // pour refresh le header
+}
+
+
+$listProduitRaw=Produit::fetchAllProduit($conn);
+$listProduit = array();
+foreach($listProduitRaw as $prod){
+    array_push($listProduit, new Produit($prod['id'], $prod['libelle'], $prod['prix'], $prod['description']));
+}
 
 
 require_once('./view/home.php');

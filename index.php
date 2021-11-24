@@ -1,5 +1,10 @@
 <?php 
 
+// on inclu tous les modeles pour pas avoir a le faire apres... 
+foreach (glob("./model/*.php") as $filename) {
+    include $filename;
+}
+
 session_start();
 
 // On insert le header
