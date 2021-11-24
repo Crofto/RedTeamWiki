@@ -21,16 +21,14 @@
         {
             // Affiche le titre_ressource de l'article ainsi que sa date de création
             try{    
-            $requete = $conn->query('SELECT ressources.id_ressource, description_ressource, titre_ressource, DATE_FORMAT(date_creation_ressource, \'%d/%m/%Y\') AS date_creation_ressource FROM ressources WHERE id_statut != 4 ORDER BY date_creation_ressource DESC;');
-            }
-
-            catch(PDOException $e){
+                $requete = 
+                    $conn->query('SELECT ressources.id_ressource, description_ressource, titre_ressource, DATE_FORMAT(date_creation_ressource, \'%d/%m/%Y\') AS date_creation_ressource FROM ressources WHERE id_statut != 4 ORDER BY date_creation_ressource DESC;');
+            }catch(PDOException $e){
                 die($e->getMessage());
             }
             
             return $requete;
             $requete->closeCursor();
         }
-
     }
  ?>
