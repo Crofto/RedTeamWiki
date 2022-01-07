@@ -1,9 +1,198 @@
 body {
+    background: #EAEDED;
     color: #6C7778;
     font-family: Helvetica;
-    font-weight: lighter;
+    font-weight: lighter;    
+    margin: 0;
 }
 
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+#pageContent {
+    background: white;
+    margin: 0 10%;
+    max-width: none;
+    min-width: 1000px;
+    overflow: hidden;    
+}
+
+#navFooter {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    background-color: #232F3E;
+    min-width: 1000px;
+    position: relative;
+}
+
+.navFooterBackToTop{
+    white-space: normal;
+    font-family: inherit;
+    color: #004B91;
+    margin-bottom: 40px;
+    background-color: #37475A;
+}
+
+.navFooterLine.navFooterLinkLine.navFooterDescLine{
+    color: #DDD;
+    text-align: center;
+    background-color: #131A22;
+    padding: 30px 0;
+    margin: 30px 0 0;
+    font-size: 12px;
+}
+
+.navFooterLine.navFooterLinkLine.navFooterDescLine table{
+    line-height: 18px;
+    white-space: nowrap;
+    font-size: 12px;
+    -webkit-border-horizontal-spacing: 0px;
+    -webkit-border-vertical-spacing: 0px;
+    box-sizing: border-box;
+    border-collapse: collapse;
+    margin-bottom: 0!important;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.navFooterBackToTop:hover {
+    background-color: #485769;
+}
+
+.navFooterBackToTop {
+    margin-bottom: 40px;
+    background-color: #37475A;
+}
+
+#nav-top.navBackToTop{
+    white-space: normal;
+    font-family: inherit;
+    color: #004B91;
+    text-decoration: none;
+}
+
+a#navBackToTop{
+    text-decoration: none;
+}
+
+.navFooterBackToTopText{
+    -webkit-text-size-adjust: 100%;
+    box-sizing: border-box;
+    font-family: inherit;
+    white-space: normal;
+    display: block;
+    text-align: center;
+    padding: 15px 0;
+    line-height: 19px;
+    font-size: 13px;
+    color: white;
+}
+
+.footerLine{
+    margin: 30px auto 15px;
+    text-align: center;
+    padding-bottom: 0;
+    width: 1000px;
+    position: relative;
+}
+
+.footerLine ul li {
+    padding: 5px;
+    display: inline;
+}
+
+
+
+.btn {
+  align-items: center;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: .5rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  box-sizing: border-box;
+  color: rgba(0, 0, 0, 0.85);
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+  justify-content: center;
+  text-decoration: none;
+  transition: all 250ms;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: baseline;
+  width: auto;
+}
+
+.btn:hover,
+.btn:focus {
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 6px;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  background-color: #F0F0F1;
+  border-color: rgba(0, 0, 0, 0.15);
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  color: rgba(0, 0, 0, 0.65);
+  transform: translateY(0);
+}
+
+
+.navFooterLine.navFooterLinkLine.navFooterPadItemLine{
+    -webkit-text-size-adjust: 100%;
+    box-sizing: border-box;
+    font-family: inherit;
+    color: #DDD;
+    line-height: 18px;
+    white-space: nowrap;
+    text-align: center;
+    background-color: #131A22;
+    max-width: 100%;
+    margin: 0;
+    padding: 10px 0 30px;
+    font-size: 12px;
+}
+
+.navFooterLine.navFooterLinkLine.navFooterPadItemLine ul{
+    box-sizing: border-box;
+    list-style-type: none;
+    display: inline-block;
+    padding: 0;
+}
+
+.navFooterLine.navFooterLinkLine.navFooterPadItemLine ul li{
+    list-style: disc;
+    word-wrap: break-word;
+    display: inline;
+    border-left: 0;
+    padding: 5px;
+}
+
+#home {
+    margin: 0 auto;
+}
+
+#home a {
+    background: white;
+    color: #0F1111!important;
+    text-decoration: none!important;
+}
+
+/* page 404 */
 #g {
     text-align: center;
     margin: 30px 0;
