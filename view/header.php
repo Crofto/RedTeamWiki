@@ -10,7 +10,6 @@
         ?>
 	</head>
 <body>
-    
      <header>
 		<ul>
 			<li>
@@ -22,19 +21,19 @@
 			</li>
 			<li>
                 <?php
-                    echo("<a class ='float_left" . ($onglet == "Commandes" ? "active" : "") . "' href = '". base() . "Commandes'>Commandes</a>");
-                ?>
-	    	</li>
-			<li>
-                <?php
-                echo("<a class ='float_left" . ($onglet == "vocabulaire" ? "active" : "") . "'href = '". base() . "vocabulaire'>vocabulaire</a>");
+                echo("<a class ='float_right" . ($onglet == "vocabulaire" ? "active" : "") . "'href = '". base() . "vocabulaire'>vocabulaire</a>");
                 ?>	
 			</li>
 			<li>
                 <?php
-                    echo("<a class ='float_left" . ($onglet == "Outils" ? "active" : "") . "'href = '". base() . "Outils'>Outils</a>");
+                    echo("<a class ='float_right" . ($onglet == "Outils" ? "active" : "") . "'href = '". base() . "Outils'>Outils</a>");
                 ?> 
 			</li>
+            <li>
+                <?php
+                    echo("<a class ='float_right" . ($onglet == "Commandes" ? "active" : "") . "' href = '". base() . "Commandes'>Commandes</a>");
+                ?>
+	    	</li>
 		</ul>
     </header>
 	</body>
