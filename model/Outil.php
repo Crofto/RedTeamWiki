@@ -54,9 +54,12 @@ class Outil{
             $result = $requete->fetchAll();
         }catch(PDOException $e){
             die($e->getMessage());
-        }       
-        return new Outil($result[0]['id'], $result[0]['nom'], $result[0]['descriptionCourte'], $result[0]['descriptionLongue'],
-                        $result[0]['lienGetStarted'], $result[0]['lienOfficiel'], $result[0]['lienDoc']);
+        } 
+        foreach($result as $res)      
+            return new Outil($res['id'], $res['nom'], $res['descriptionCourte'], $res['descriptionLongue'],
+                $res['lienGetStarted'], $res['lienOfficiel'], $res['lienDoc']);
+                
+        return new Outil(0, "", "", "", "", "", "");
     }
 
     /**

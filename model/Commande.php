@@ -4,15 +4,15 @@ class Commande{
     public $id;
     public $nom;
     public $alias;
-    public $DescriptionCourte;  
-    public $DescriptionLongue; 
+    public $descriptionCourte;  
+    public $descriptionLongue; 
     
     function __construct(int $id, string $nom, ?string $alias, ?string $DescriptionCourte, ?string $DescriptionLongue ) {
         $this->id = $id;
         $this->nom = $nom;
         $this->alias = $alias;
-        $this->DescriptionCourte = $DescriptionCourte;
-        $this->DescriptionLongue = $DescriptionLongue;
+        $this->descriptionCourte = $DescriptionCourte;
+        $this->descriptionLongue = $DescriptionLongue;
     }
 
     /**
@@ -43,14 +43,19 @@ class Commande{
     public static function fetchCommandeId($conn, int $id)
     {
         try{    
-            $requete = $conn->prepare("SELECT * FROM Vocabulaire where id = :id;");
+            $requete = $conn->prepare("SELECT * FROM Commande where id = :id;");
             $requete->execute([':id' => $id]);
             $result = $requete->fetchAll();
         }catch(PDOException $e){
             die($e->getMessage());
-        }       
-        return new Commande($result[0]['id'], $result[0]['Nom'], $result[0]['Alias'], $result[0]['DescriptionCourte'], 
-            $result[0]['DescriptionLongue']);
+        } 
+
+        foreach($result as $res)
+            return new Commande($res['id'], $res['Nom'], $res['Alias'], $res['DescriptionCourte'], 
+                $res['DescriptionLongue']);
+        
+        return new Commande(0, "", "", "", "");
+
     }
 
     /**
