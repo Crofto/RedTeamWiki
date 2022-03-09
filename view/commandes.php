@@ -15,7 +15,6 @@
 
 
 <?php
-echo var_dump($commandeArray);
 //On boucle sur la list de vocab 
 foreach($commandeArray as $cmd){
     echo '<p Class="CommandeNomList"> <a href="' . base() . "commandesDetails/" . $cmd->id . '" >'  .  $cmd->nom . '</a></p>'. 

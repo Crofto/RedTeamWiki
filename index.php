@@ -17,7 +17,6 @@ session_start();
 // On insert le header
 require_once("./view/header.php");
 
-echo "<h1> index.php de base </h1>";
 
 // On regarde ce que l'on a dans notre URL
 $URL = explode("/", $_SERVER['QUERY_STRING']);
