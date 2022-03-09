@@ -3,95 +3,103 @@
 class Outil{
     public $id;
     public $nom;
-    public $alias;
-    public $definition;  
+    public $descriptionCourte;
+    public $descriptionLongue;  
+    public $lienGetStarted ;   
+    public $lienOfficiel;  
+    public $lienDoc;  
     
-    function __construct(int $id, string $nom, string $alias, string $definition ) {
+    function __construct(int $id, string $nom, string $descriptionCourte, ?string $descriptionLongue, 
+            string $lienGetStarted, string $lienOfficiel, string $lienDoc ) {
         $this->id = $id;
         $this->nom = $nom;
-        $this->alias = $alias;
-        $this->definition = $definition;
+        $this->descriptionCourte = $descriptionCourte;
+        $this->descriptionLongue = $descriptionLongue;
+        $this->lienGetStarted = $lienGetStarted;
+        $this->lienOfficiel = $lienOfficiel;
+        $this->lienDoc = $lienDoc;
     }
 
     /**
-     * On récupere tout le vocabulaire 
+     * On récupere tout les outils 
      */
-    public static function fetchAllVocabulaire($conn)
+    public static function fetchAllOutils($conn)
     {
-        $listVocabulaire = array();
+        $listOutils = array();
         try{    
-            $requete = $conn->prepare("SELECT * FROM Vocabulaire;");
+            $requete = $conn->prepare("SELECT * FROM Outil;");
             $requete->execute();
             $result = $requete->fetchAll();
-            // On rempli notre tablea de resultat
-            foreach($result as $vocabulaire){
-                array_push($listVocabulaire, 
-                    new Vocabulaire($vocabulaire['id'], $vocabulaire['nom'], $vocabulaire['alias'], $vocabulaire['definition']));
+            // On rempli notre tableau de resultat
+            foreach($result as $outil){
+                array_push($listOutils, 
+                    new Outil($outil['id'], $outil['nom'], $outil['descriptionCourte'], $outil['descriptionLongue'],
+                        $outil['lienGetStarted'], $outil['lienOfficiel'], $outil['lienDoc']));
             }
         }catch(PDOException $e){
             die($e->getMessage());
         }        
-        return $listVocabulaire;
+        return $listOutils;
     }
 
     /**
-     * On le vocabulaire lié à un id précis
+     * On recupère l'outil lié à un id précis
      */
-    public static function fetchVocabulaireId($conn, int $id)
+    public static function fetchOutilId($conn, int $id)
     {
         // Affiche le titre_ressource de l'article ainsi que sa date de création
         try{    
-            $requete = $conn->prepare("SELECT * FROM Vocabulaire where id = :id;");
+            $requete = $conn->prepare("SELECT * FROM Outil where id = :id;");
             $requete->execute([':id' => $id]);
             $result = $requete->fetchAll();
         }catch(PDOException $e){
             die($e->getMessage());
         }       
-        return new Vocabulaire($result[0]['id'], $result[0]['libelle'], $result[0]['prix'], $result[0]['description']);
+        return new Outil($result[0]['id'], $result[0]['nom'], $result[0]['descriptionCourte'], $result[0]['descriptionLongue'],
+                        $result[0]['lienGetStarted'], $result[0]['lienOfficiel'], $result[0]['lienDoc']);
     }
 
     /**
      * Recherche du vocabulaire en fonction d'une chaine passé en paramètres
      * on va rechercher en fonctiondu nom de l'alias et, si on a une chaine de plus de 5 caracteres dans la definition
      */
-    public static function fetchVocabulaireFiltered($conn, String $recherche)
+    public static function fetchOutilsFiltered($conn, String $recherche)
     {
         //Si recherche est vide, on envoie tout
         if (strlen($recherche) == 0)
-            return Vocabulaire::fetchAllVocabulaire($conn);
+            return Outil::fetchAllOutils($conn);
 
-        $listVocabulaire = array();            
+        $listOutils = array();            
         try{    
-            //On le met en lower pour éviter les pb et pas opti en sql  (méthode particulière car potentiels utf8)
+            //On le met en lower pour éviter les pb et pas opti en sql (méthode particulière car potentiels utf8)
             $rechercheLike = mb_strtolower("%$recherche%");
-            //On check la taille pour pas rechercher dans definition à chaque fois
+            //On check la taille pour pas rechercher dans la description à chaque fois
             if (strlen($recherche) > 5)
                 $requete = $conn->prepare(
                     "SELECT * 
-                    FROM Vocabulaire 
+                    FROM Outil 
                     where lower(nom) like :recherche 
-                        or lower(alias) like :recherche
-                        or lower(definition) like :recherche ;"
+                        or lower(descriptionCourte) like :recherche ;"
                 );
             else
                 $requete = $conn->prepare(
                     "SELECT * 
-                    FROM Vocabulaire 
-                    where lower(nom) like :recherche 
-                        or lower(alias) like :recherche"
+                    FROM Outil 
+                    where lower(nom) like :recherche"
                 );                    
                      
             $requete->execute([':recherche' => $rechercheLike]);
             $result = $requete->fetchAll();
             // On rempli notre tableau de resultat
-            foreach($result as $vocabulaire){
-                array_push($listVocabulaire, 
-                    new Vocabulaire($vocabulaire['id'], $vocabulaire['nom'], $vocabulaire['alias'], $vocabulaire['definition']));
+            foreach($result as $outil){
+                array_push($listOutils, 
+                    new Outil($outil['id'], $outil['nom'], $outil['descriptionCourte'], $outil['descriptionLongue'],
+                        $outil['lienGetStarted'], $outil['lienOfficiel'], $outil['lienDoc']));
             }
         }catch(PDOException $e){
             die($e->getMessage());
         }        
-        return $listVocabulaire;
+        return $listOutils;
     }
 }
     

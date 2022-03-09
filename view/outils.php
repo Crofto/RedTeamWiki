@@ -6,11 +6,10 @@
 
 <?php
 
-//On boucle sur la list de vocab 
+//On boucle sur la liste d'outil 
 foreach($outilsArray as $outil){
-    echo '<p Class="vocabNomList">' .  $vocab->nom . ' (' . $vocab->alias . ') : </p>' . 
-        '<p Class="vocabDefinitionList">' .  $vocab->definition . '</p>' ; 
+    echo '<p Class="outilNomList"><a href="' . base() . "outilsDetails/" . $outil->id . '" >'  .  $outil->nom . '</a></p>' . 
+        '<p Class="outilDefinitionList">' .  $outil->descriptionCourte . '</p>' ; 
 }
-
 
 ?>

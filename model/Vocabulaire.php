@@ -35,7 +35,7 @@ class Vocabulaire{
     }
 
     /**
-     * On le vocabulaire lié à un id précis
+     * On choppe le vocabulaire lié à un id précis
      */
     public static function fetchVocabulaireId($conn, int $id)
     {

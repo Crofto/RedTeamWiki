@@ -8,7 +8,8 @@ echo "<p> Sous total panier : " . $_SESSION['Panier']->getSousTotal() . "</p>";
 */
 echo "<a href = '". base() . "home'>Home</a>
         <a href = '". base() . "Outils'>Outils</a>
-        <a href = '". base() . "vocabulaire'>Vocabulaire</a>";
+        <a href = '". base() . "vocabulaire'>Vocabulaire</a>
+        <a href = '". base() . "Commandes'>Commandes</a>";
 ?>
 
 
