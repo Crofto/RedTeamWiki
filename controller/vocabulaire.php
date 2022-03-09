@@ -10,6 +10,5 @@ if ( isset($_POST['isRechercheVocabulaire'])){
 
 require_once('./view/vocabulaire.php');
 
-echo ("lol")
 
 ?>
