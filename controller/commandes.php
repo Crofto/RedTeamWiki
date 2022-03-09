@@ -1,15 +1,21 @@
 <?php
-
-
 $vocabulaireArray = array();
 
 //On choppe tous les outils pour afficher les filtres 
 $outilsArray = Outil::fetchAllOutils($conn);
 
-if ( isset($_POST['isRechercheCommande'])){
-    $vocabulaireArray = Vocabulaire::fetchVocabulaireFiltered($conn, $_POST['rechercheVocabulaire']);
+$wantedOutilArray = array();
+
+foreach($outilsArray as $outil){
+    if ( isset($_POST[$outil->nom]) ){
+        array_push($wantedOutilArray, $outil);
+    }
+}
+
+if ( isset($_POST['isRechercheCommande']) ){
+    $vocabulaireArray = Commande::fetchCommandeFiltered($conn, $_POST['rechercheCommande'], $wantedOutilArray);
 } else {
-    $vocabulaireArray = Vocabulaire::fetchAllVocabulaire($conn);
+    $vocabulaireArray = Commande::fetchAllCommande($conn);
 }
 
 require_once('./view/commandes.php');
