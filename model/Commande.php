@@ -145,7 +145,7 @@ class Commande{
         return $listCommande;
     }
 
-    public function insertCommande($conn):string
+    public function insertCommande($conn, $outil, $tagArray, $newTag):string
     {
         try{
             //On check si la commande existe déjà pour ne pas avoir de doublons
@@ -168,6 +168,57 @@ class Commande{
             $stmt->bindParam(':DescriptionLongue', $this->descriptionLongue); 
 
             $stmt->execute();
+
+            $stmt = $conn->prepare("select id from commande where nom = :Nom ");
+            $stmt->bindParam(':Nom', $this->nom); 
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+            $this->id = $result[0]['id'];
+
+            //On insert les outils
+            if($outil != null && count($outil) > 0){                
+                foreach($outil as $idOutil){
+                    $outilExiste = (Outil::fetchOutilId($conn, $idOutil)->id != 0);
+                    if ($outilExiste){
+                        $stmt = $conn->prepare("INSERT INTO outilcommande
+                        (idOutil, idCommande) VALUES (:idOutil, :idCommande);");
+
+                        $stmt->bindParam(':idOutil', $idOutil); 
+                        $stmt->bindParam(':idCommande', $this->id); 
+                        $stmt->execute();
+                    }
+                }
+            }
+
+            //On insert les Tag
+            if($tagArray != null && count($tagArray) > 0){
+                foreach($tagArray as $idTag){
+                    $outilExiste = (Outil::fetchOutilId($conn, $idOutil)->id != 0);
+                    if ($outilExiste){
+                        $stmt = $conn->prepare("INSERT INTO TagCommande
+                        (idTag, idCommande) VALUES ( :idTag , :idCommande );");
+
+                        $stmt->bindParam(':idTag', $idTag); 
+                        $stmt->bindParam(':idCommande', $this->id); 
+                        $stmt->execute();
+                    }
+                }
+            }
+
+            if($newTag != null && strlen($newTag) > 0){
+                foreach(explode(", ", $newTag) as $nomTag){
+                    echo "nomTag" . $nomTag;
+                    (new Tag(0, $nomTag))->insertTag($conn);
+                    $idTag = Tag::fetchTagNom($conn, $nomTag)->id;
+                    echo "idTag" . $idTag;
+                    $stmt = $conn->prepare("INSERT INTO TagCommande
+                        (idTag, idCommande) VALUES ( :idTag , :idCommande );");
+
+                    $stmt->bindParam(':idTag', $idTag); 
+                    $stmt->bindParam(':idCommande', $this->id); 
+                    $stmt->execute();
+                }
+            }
 
             return "Commande insérée";
         }catch(PDOException $e){

@@ -4,7 +4,7 @@ function base(){
     return str_replace("index.php", "", $_SERVER['PHP_SELF']);
 }
 
-
+header('Cache-Control: no-cache, must-revalidate, max-age=0');
 echo "<link rel=\"stylesheet\" href=\"" . base() . "CSS/main.css\" type=\"text/css\">";
 
 echo "<link rel=\"stylesheet\" href=\"" . base() . "CSS/header.css\" type=\"text/css\">";
