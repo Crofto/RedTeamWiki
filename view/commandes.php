@@ -1,6 +1,6 @@
 <!-- Barre de recherche --> 
-<form class="barreRecherche" method="post" id="vocabulaire">
-    <input id="search" type="text" name="rechercheCommande" placeholder="Exemple: Pentest">
+<form class="barreRecherche" method="post" id="commande">
+    <input id="search" type="text" name="rechercheCommande" placeholder="Exemple: nmap">
     <input id="submit" type="submit" name="isRechercheCommande" value="Chercher">
 
     <?php
@@ -13,8 +13,9 @@
 
 </form>
 
-
 <?php
+echo '<a href="' . base() . 'commandesInserts" > Inserer des commandes </a>';
+
 //On boucle sur la list de vocab 
 foreach($commandeArray as $cmd){
     echo '<p Class="CommandeNomList"> <a href="' . base() . "commandesDetails/" . $cmd->id . '" >'  .  $cmd->nom . '</a></p>'. 

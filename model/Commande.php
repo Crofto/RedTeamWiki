@@ -7,7 +7,7 @@ class Commande{
     public $descriptionCourte;  
     public $descriptionLongue; 
     
-    function __construct(int $id, string $nom, ?string $alias, ?string $DescriptionCourte, ?string $DescriptionLongue ) {
+    function __construct(int $id, string $nom, ?string $alias, ?string $DescriptionCourte, ?string $DescriptionLongue = null ) {
         $this->id = $id;
         $this->nom = $nom;
         $this->alias = $alias;
@@ -144,6 +144,36 @@ class Commande{
         }        
         return $listCommande;
     }
+
+    public function insertCommande($conn):string
+    {
+        try{
+            //On check si la commande existe déjà pour ne pas avoir de doublons
+            $stmt = $conn->prepare("select id from commande where nom = :Nom ");
+            $stmt->bindParam(':Nom', $this->nom); 
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+            if (is_array($result) && count($result)>0){
+                return "Commande déjà existante";
+            }
+
+            //Insert de la commande
+            $stmt = $conn->prepare("INSERT INTO commande
+            (Nom, Alias, DescriptionCourte, DescriptionLongue) 
+            VALUES (:Nom, :Aliass, :DescriptionCourte, :DescriptionLongue)");
+
+            $stmt->bindParam(':Nom', $this->nom); 
+            $stmt->bindParam(':Aliass', $this->alias); 
+            $stmt->bindParam(':DescriptionCourte', $this->descriptionCourte); 
+            $stmt->bindParam(':DescriptionLongue', $this->descriptionLongue); 
+
+            $stmt->execute();
+
+            return "Commande insérée";
+        }catch(PDOException $e){
+            return "Commande non insérée";
+
+        }
+    }
 }
-    
 ?>

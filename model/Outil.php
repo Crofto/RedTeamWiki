@@ -104,6 +104,39 @@ class Outil{
         }        
         return $listOutils;
     }
+
+    public function insertOutil($conn):string
+    {
+        try{
+            //On check si l'outil existe déjà pour ne pas avoir de doublons
+            $stmt = $conn->prepare("select id from outil where nom = :Nom ");
+            $stmt->bindParam(':Nom', $this->nom); 
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+            if (is_array($result) && count($result)>0){
+                return "outil déjà existant";
+            }
+
+            //Insert de la outil
+            $stmt = $conn->prepare("INSERT INTO outil
+            (Nom, DescriptionCourte, DescriptionLongue, lienGetStarted, lienOfficiel, lienDoc) 
+            VALUES (:Nom, :DescriptionCourte, :DescriptionLongue, :lienGetStarted, :lienOfficiel, :lienDoc)");
+
+            $stmt->bindParam(':Nom', $this->nom); 
+            $stmt->bindParam(':DescriptionCourte', $this->descriptionCourte); 
+            $stmt->bindParam(':DescriptionLongue', $this->descriptionLongue); 
+            $stmt->bindParam(':lienGetStarted', $this->lienGetStarted); 
+            $stmt->bindParam(':lienOfficiel', $this->lienOfficiel); 
+            $stmt->bindParam(':lienDoc', $this->lienDoc); 
+
+            $stmt->execute();
+
+            return "outil inséré";
+        }catch(PDOException $e){
+            return "outil non inséré";
+
+        }
+    }
 }
     
 ?>

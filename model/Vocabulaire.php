@@ -6,7 +6,7 @@ class Vocabulaire{
     public $alias;
     public $definition;  
     
-    function __construct(int $id, string $nom, string $alias, string $definition ) {
+    function __construct(int $id, string $nom, ?string $alias, ?string $definition ) {
         $this->id = $id;
         $this->nom = $nom;
         $this->alias = $alias;
@@ -92,6 +92,35 @@ class Vocabulaire{
             die($e->getMessage());
         }        
         return $listVocabulaire;
+    }
+
+    public function insertVocabulaire($conn):string
+    {
+        try{
+            //On check si la commande existe déjà pour ne pas avoir de doublons
+            $stmt = $conn->prepare("select id from Vocabulaire where nom = :Nom ");
+            $stmt->bindParam(':Nom', $this->nom); 
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+            if (is_array($result) && count($result)>0){
+                return "Vocabulaire déjà existant";
+            }
+
+            //Insert de la commande
+            $stmt = $conn->prepare("INSERT INTO Vocabulaire
+            (Nom, Alias, definition) 
+            VALUES (:Nom, :Aliass, :definition)");
+
+            $stmt->bindParam(':Nom', $this->nom); 
+            $stmt->bindParam(':Aliass', $this->alias); 
+            $stmt->bindParam(':definition', $this->definition); 
+
+            $stmt->execute();
+
+            return "Vocabulaire inséré";
+        }catch(PDOException $e){
+            return "Vocabulaire non inséré";
+        }
     }
 }
     

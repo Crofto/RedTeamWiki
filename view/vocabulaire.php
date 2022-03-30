@@ -4,7 +4,8 @@
     <input id="submit" type="submit" name="isRechercheVocabulaire" value="Chercher">
 </form>
 
-<?php
+<?php 
+echo '<a href="' . base() . 'vocabulaireInserts" > Ajouter du vocabulaire </a>'; 
 
 //On boucle sur la list de vocab 
 foreach($vocabulaireArray as $vocab){

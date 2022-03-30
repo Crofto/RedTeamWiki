@@ -1,6 +1,3 @@
 <?php
-
-echo "controller/index.php" ;
-
-
+echo "controller/index.php";
 ?>
