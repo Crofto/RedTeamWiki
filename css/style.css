@@ -8,17 +8,25 @@ body{
 .float_right{
 	float: right;
 }
-a:hover {
-    background-color: black;
-    color: white;
-}
+
 a.float_left{
 	color: white;
 }
 a.float_right{
-	color: darkred;
+	color: rgb(192, 0, 0);
 }
 ul{
     padding-inline-start: 0px;
 	margin-top:0;
+}
+footer{
+    bottom:0;
+    text-decoration: none;
+}
+img{
+    border-radius: 50%;
+}
+.outlook{
+    width:50px;
+    height:50px;
 }

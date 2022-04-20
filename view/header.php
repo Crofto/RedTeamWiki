@@ -13,25 +13,24 @@
      <header>
 		<ul>
 			<li>
-				<span>
-                    <?php
-                    echo("<a class ='float_left" . ($onglet == "Wiki Cybersécurité" ? "active" : "") . "' href = '". base() . "Wiki Cybersécurité'>Wiki Cybersécurité</a>");
-                    ?>            
-				</span>
+			    <?php
+                    echo("<a class ='float_left " . ($onglet == "Wiki Cybersécurité" ? "active" : "") . "' href = '". base() . "Wiki Cybersécurité'>Wiki Cybersécurité</a>");
+                ?>            
+				
 			</li>
-			<li>
+			<li class="float_right button1" >
                 <?php
-                echo("<a class ='float_right" . ($onglet == "vocabulaire" ? "active" : "") . "'href = '". base() . "vocabulaire'>vocabulaire</a>");
+                echo("<a class ='float_right " . ($onglet == "vocabulaire" ? "active" : "") . "'href = '". base() . "vocabulaire'>vocabulaire</a>");
                 ?>	
 			</li>
-			<li>
+			<li class="float_right button2">
                 <?php
-                    echo("<a class ='float_right" . ($onglet == "Outils" ? "active" : "") . "'href = '". base() . "Outils'>Outils</a>");
+                    echo("<a class ='float_right " . ($onglet == "Outils" ? "active" : "") . "'href = '". base() . "Outils'>Outils</a>");
                 ?> 
 			</li>
-            <li>
+            <li class="float_right button3">
                 <?php
-                    echo("<a class ='float_right" . ($onglet == "Commandes" ? "active" : "") . "' href = '". base() . "Commandes'>Commandes</a>");
+                    echo("<a class ='float_right " . ($onglet == "Commandes" ? "active" : "") . "' href = '". base() . "Commandes'>Commandes</a>");
                 ?>
 	    	</li>
 		</ul>

@@ -8,7 +8,7 @@
         ?>
 	</head>
 <body>
-    
+	
 		<footer>	
 			<p>contactez nous :</p>	
 			<ul>
