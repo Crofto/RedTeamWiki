@@ -23,7 +23,7 @@
                 ?>	
 			</li>
 			<li class="float_right button2">
-                <?php
+                <?php 
                     echo("<a class ='float_right " . ($onglet == "Outils" ? "active" : "") . "'href = '". base() . "Outils'>Outils</a>");
                 ?> 
 			</li>
