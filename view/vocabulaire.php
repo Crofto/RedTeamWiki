@@ -9,8 +9,8 @@ echo '<a href="' . base() . 'vocabulaireInserts" > Ajouter du vocabulaire </a>';
 
 //On boucle sur la list de vocab 
 foreach($vocabulaireArray as $vocab){
-    echo '<p Class="vocabNomList">' .  $vocab->nom . ' (' . $vocab->alias . ') : </p>' . 
-        '<p Class="vocabDefinitionList">' .  $vocab->definition . '</p>' ; 
+    echo '<p Class="vocabNomList">' .  htmlspecialchars($vocab->nom) . ' (' . htmlspecialchars($vocab->alias) . ') : </p>' . 
+        '<p Class="vocabDefinitionList">' .  htmlspecialchars($vocab->definition) . '</p>' ; 
 }
 
 

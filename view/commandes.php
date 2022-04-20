@@ -9,7 +9,7 @@
     //On boucle sur la liste d'outil 
     foreach($outilsArray as $outil){
         echo '<input type="checkbox" name="' . $outil->nom . '" class="checkBouttonOutil" id="' . $outil->id . '">';
-        echo '<label for="' . $outil->id . '" class="labelBouttonOutil"> ' . $outil->nom . ' </label>';
+        echo '<label for="' . $outil->id . '" class="labelBouttonOutil"> ' . htmlspecialchars($outil->nom) . ' </label>';
     }
     ?>
 
@@ -20,8 +20,8 @@ echo '<a href="' . base() . 'commandesInserts" > Inserer des commandes </a>';
 
 //On boucle sur la list de vocab 
 foreach($commandeArray as $cmd){
-    echo '<p Class="CommandeNomList"> <a href="' . base() . "commandesDetails/" . $cmd->id . '" >'  .  $cmd->nom . '</a></p>'. 
-        '<p Class="CommandeDescriptionList">' .  $cmd->descriptionCourte . '</p>' ; 
+    echo '<p Class="CommandeNomList"> <a href="' . base() . "commandesDetails/" . $cmd->id . '" >'  .  htmlspecialchars($cmd->nom) . '</a></p>'. 
+        '<p Class="CommandeDescriptionList">' .  htmlspecialchars($cmd->descriptionCourte) . '</p>' ; 
 }
 
 ?>
