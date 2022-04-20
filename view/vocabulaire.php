@@ -1,7 +1,7 @@
 <!-- Barre de recherche --> 
 <form class="barreRecherche" method="post" id="vocabulaire">
     <input id="search" type="text" name="rechercheVocabulaire" placeholder="Exemple: Pentest">
-    <input id="submit" type="submit" name="isRechercheVocabulaire" value="Chercher">
+    <input id="submit" class = "btn" type="submit" name="isRechercheVocabulaire" value="Chercher">
 </form>
 
 <?php 

@@ -1,8 +1,10 @@
 <!-- Barre de recherche --> 
 <form class="barreRecherche" method="post" id="commande">
     <input id="search" type="text" name="rechercheCommande" placeholder="Exemple: nmap">
-    <input id="submit" class = "btn" type="submit" name="isRechercheCommande" value="Chercher">
+    <input id="submit" class = "btn" type="submit" name="isRechercheCommande" value="Chercher"> 
+       
 
+    <br>
     <?php
     //On boucle sur la liste d'outil 
     foreach($outilsArray as $outil){

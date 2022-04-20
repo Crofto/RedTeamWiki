@@ -1,7 +1,5 @@
 <html>
 	<head>
-		<meta charset="utf-8"/>
-		<title>Phishing Site Ynav</title>
         <?php
             echo "<link rel=\"stylesheet\" href=\"" . base() . "CSS/style.css\" type=\"text/css\">";
             echo "<link rel=\"stylesheet\" href=\"" . base() . "CSS/footer.css\" type=\"text/css\">";

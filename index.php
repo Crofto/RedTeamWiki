@@ -6,8 +6,6 @@ function base(){
 
 
 echo "<link rel=\"stylesheet\" href=\"" . base() . "CSS/content.css\" type=\"text/css\">";
-
-echo "<link rel=\"stylesheet\" href=\"" . base() . "CSS/header.css\" type=\"text/css\">";
 // on inclu tous les modeles pour pas avoir a le faire apres... 
 foreach (glob("./model/*.php") as $filename) {
     include $filename;

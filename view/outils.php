@@ -1,7 +1,7 @@
 <!-- Barre de recherche --> 
 <form class="barreRecherche" method="post" id="Outils">
     <input id="search" type="text" name="rechercheOutils" placeholder="Exemple: Kali">
-    <input id="submit" type="submit" name="isRechercheOutils" value="Chercher">
+    <input id="submit" class = "btn" type="submit" name="isRechercheOutils" value="Chercher">
 </form>
 
 <?php
