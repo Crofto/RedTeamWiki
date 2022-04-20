@@ -10,14 +10,12 @@
         ?>
 	</head>
 <body>
-     <header>
+    <header>
 		<ul>
 			<li>
-				<span>
-                    <?php
-                    echo("<a class ='float_left " . ($onglet == "Wiki Cybersécurité" ? "active" : "") . "' href = '". base() . "Wiki Cybersécurité'>Wiki Cybersécurité</a>");
-                    ?>            
-				</span>
+                <?php
+                    echo("<a class ='float_left' href = '". base() . "'>Wiki Cybersécurité</a>");
+                ?>     
 			</li>
 			<li>
                 <?php

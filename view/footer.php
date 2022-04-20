@@ -7,11 +7,10 @@
             echo "<link rel=\"stylesheet\" href=\"" . base() . "CSS/footer.css\" type=\"text/css\">";
         ?>
 	</head>
-<body>
-	
+	<body>	
 		<footer>
 			<div class="Center">
-				<p>contactez nous :</p>	
+				<p>Contactez nous :</p>	
 				<ul>
 					<li>
 						<span>
@@ -22,7 +21,7 @@
 					</li>
 					<li>
 						<span>
-							<a href="https://https://discord.gg/ynovlyon">
+							<a href="https://discord.gg/ynovlyon">
 								<img <?php echo 'src="' . base() . 'Images/discord.png"' ; ?>>
 							</a>
 						</span>
