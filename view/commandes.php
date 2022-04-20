@@ -8,7 +8,7 @@
     <?php
     //On boucle sur la liste d'outil 
     foreach($outilsArray as $outil){
-        echo '<input type="checkbox" name="' . $outil->nom . '" class="checkBouttonOutil" id="' . $outil->id . '">';
+        echo '<input type="checkbox" name="' . htmlspecialchars($outil->nom) . '" class="checkBouttonOutil" id="' . $outil->id . '">';
         echo '<label for="' . $outil->id . '" class="labelBouttonOutil"> ' . htmlspecialchars($outil->nom) . ' </label>';
     }
     ?>
