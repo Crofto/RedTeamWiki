@@ -24,17 +24,17 @@
                 echo("<a class ='float_right " . ($onglet == "vocabulaire" ? "active" : "") . "'href = '". base() . "vocabulaire'>vocabulaire</a>");
                 ?>	
 			</li>
-			<li>
-                <?php
+			<li class="float_right button2">
+                <?php 
                     echo("<a class ='float_right " . ($onglet == "Outils" ? "active" : "") . "'href = '". base() . "Outils'>Outils</a>");
                 ?> 
 			</li>
-            <li>
+            <li class="float_right button3">
                 <?php
                     echo("<a class ='float_right " . ($onglet == "Commandes" ? "active" : "") . "' href = '". base() . "Commandes'>Commandes</a>");
                 ?>
 	    	</li>
 		</ul>
     </header>
-	</body>
+</body>
 </html>
