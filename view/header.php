@@ -12,12 +12,11 @@
 <body>
      <header>
 		<ul>
-			<li>
-			    <?php
+            <li>
+                 <?php
                     echo("<a class ='float_left " . ($onglet == "Wiki Cybersécurité" ? "active" : "") . "' href = '". base() . "Wiki Cybersécurité'>Wiki Cybersécurité</a>");
-                ?>            
-				
-			</li>
+                ?>
+                </li>        
 			<li class="float_right button1" >
                 <?php
                 echo("<a class ='float_right " . ($onglet == "vocabulaire" ? "active" : "") . "'href = '". base() . "vocabulaire'>vocabulaire</a>");

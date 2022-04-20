@@ -6,6 +6,7 @@ body {
     margin: 0;
 }
 
+
 ul {
     display: block;
     list-style-type: disc;
@@ -43,10 +44,6 @@ color: #004B91;
     text-decoration: underline;
     font-size:large;
 }
-
-
-
-
 
 
 #navFooter {

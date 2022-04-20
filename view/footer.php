@@ -9,24 +9,26 @@
 	</head>
 <body>
 	
-		<footer>	
-			<p>contactez nous :</p>	
-			<ul>
-    			<li>
-					<span>
-						<a href= "">
-							<img class="outlook" src="Images/outlook.png">
-						</a>	
-					</span>
-				</li>
-				<li>
-					<span>
-						<a href="https://https://discord.gg/ynovlyon">
-							<img src="Images/discord.png">
-						</a>
-					</span>
-				</li>
-			</ul>
+		<footer>
+			<div class="Center">
+				<p>contactez nous :</p>	
+				<ul>
+					<li>
+						<span>
+							<a href="mailto:antoine.capitain@ynov.com">
+								<img class="outlook" src="Images/outlook.png">
+							</a>	
+						</span>
+					</li>
+					<li>
+						<span>
+							<a href="https://https://discord.gg/ynovlyon">
+								<img src="Images/discord.png">
+							</a>
+						</span>
+					</li>
+				</ul>
+			</div>
 		</footer>
 	</body>
 </html>

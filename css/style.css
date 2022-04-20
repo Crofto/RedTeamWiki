@@ -4,14 +4,12 @@ body{
 }
 .float_left{
 	float: left;
+	color: white;
 }
 .float_right{
 	float: right;
 }
 
-a.float_left{
-	color: white;
-}
 a.float_right{
 	color: rgb(192, 0, 0);
 }
