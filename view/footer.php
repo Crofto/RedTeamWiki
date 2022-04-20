@@ -16,7 +16,7 @@
 					<li>
 						<span>
 							<a href="mailto:antoine.capitain@ynov.com">
-								<img class="outlook" <?php echo 'src="' . base() . 'Images/discord.png"' ; ?>>
+								<img class="outlook" <?php echo 'src="' . base() . 'Images/outlook.png"' ; ?>>
 							</a>	
 						</span>
 					</li>
