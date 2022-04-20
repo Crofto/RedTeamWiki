@@ -9,7 +9,6 @@
 	</head>
 	<body>	
 		<footer>
-			<div class="Center">
 				<p>Contactez nous :</p>	
 				<ul>
 					<li>
@@ -27,7 +26,6 @@
 						</span>
 					</li>
 				</ul>
-			</div>
 		</footer>
 	</body>
 </html>

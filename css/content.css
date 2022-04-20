@@ -5,6 +5,12 @@ body {
     font-weight: lighter;    
     margin: 0;
 }
+.font-color {
+    color: rgb(192, 0, 0);
+}
+.no-style li{
+    list-style: none;
+}
 
 ul {
     display: block;
