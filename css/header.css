@@ -6,11 +6,26 @@ header{
 	border-left:0px;
 	padding-right:20px;
 }
+li:hover {
+    border-radius: 16px;
+    background: #3d3d3d;
+    box-shadow: inset -17px 17px 33px #131313;
+    border:#131313 solid 3px;   
+}
 header a{
     text-decoration: none;
     padding: 10px;
 } 
 header ul li{
 	display: inline;
-    padding: 12px;
+    padding: 2px;
+}
+header a.active {
+    border-radius: 9px;
+    background: #333333;
+    box-shadow: inset -17px 17px 30px #1a1a1a,
+                inset 17px -17px 30px #4d4d4d;
+}
+li{
+    margin-top:2px;
 }
