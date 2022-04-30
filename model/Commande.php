@@ -5,7 +5,8 @@ class Commande{
     public $nom;
     public $alias;
     public $descriptionCourte;  
-    public $descriptionLongue; 
+    public $descriptionLongue;
+    public $tags; 
     
     function __construct(int $id, string $nom, ?string $alias, ?string $DescriptionCourte, ?string $DescriptionLongue = null ) {
         $this->id = $id;
@@ -27,9 +28,9 @@ class Commande{
             $result = $requete->fetchAll();
             // On rempli notre tablea de resultat
             foreach($result as $Commande){
-                array_push($listCommande, 
-                    new Commande($Commande['id'], $Commande['Nom'], $Commande['Alias'], $Commande['DescriptionCourte'], 
-                        $Commande['DescriptionLongue']));
+                $com = new Commande($Commande['id'], $Commande['Nom'], $Commande['Alias'], $Commande['DescriptionCourte'], $Commande['DescriptionLongue']);
+                $com->tags = Tag::fetchTagCommande($conn, $com->id);
+                array_push($listCommande, $com);
             }
         }catch(PDOException $e){
             die($e->getMessage());
@@ -50,9 +51,10 @@ class Commande{
             die($e->getMessage());
         } 
 
-        foreach($result as $res)
-            return new Commande($res['id'], $res['Nom'], $res['Alias'], $res['DescriptionCourte'], 
-                $res['DescriptionLongue']);
+        foreach($result as $Commande)
+            $com = new Commande($Commande['id'], $Commande['Nom'], $Commande['Alias'], $Commande['DescriptionCourte'], $Commande['DescriptionLongue']);
+            $com->tags = Tag::fetchTagCommande($conn, $com->id);
+            return $com;
         
         return new Commande(0, "", "", "", "");
 
@@ -83,14 +85,14 @@ class Commande{
                 $requete = $conn->prepare(
                     "SELECT * 
                     FROM Commande 
-                    where id in ( select outilCommande.idCommande 
-                        from outilcommande 
-                            inner join outil on outilcommande.idoutil = outil.id and outil.id in ( :listOutil )  )"
+                    where id in (   select outilCommande.idCommande 
+                                    from outilcommande 
+                                        inner join outil on outilcommande.idoutil = outil.id and outil.id in ( :listOutil )  )"
                 );                    
                 $requete->bindParam(':listOutil', $stringOutil);
                 $requete->execute(); 
 
-            } else if (strlen($recherche) != 0  && count($listOutil) != 0 )  {
+            } else if (count($listOutil) != 0 )  {
                 //On le met en lower pour éviter les pb et pas opti en sql  (méthode particulière car potentiels utf8)
                 $rechercheLike = mb_strtolower("%$recherche%");
                 //On check la taille pour pas rechercher dans definition à chaque fois            
@@ -100,7 +102,7 @@ class Commande{
                     where (
                             lower(nom) like :recherche 
                             or lower(alias) like :recherche
-                            or id in (select idcommande 
+                            or id in (  select idcommande 
                                         from tagCommande 
                                             inner join tag on tagcommande.idtag = tag.id and tag.nom like :recherche) 
                         )
@@ -119,13 +121,12 @@ class Commande{
                 $requete = $conn->prepare(
                     "SELECT * 
                     FROM Commande 
-                    where (
-                            lower(nom) like :recherche 
-                            or lower(alias) like :recherche
-                            or id in (select idcommande 
-                                        from tagCommande 
-                                            inner join tag on tagcommande.idtag = tag.id and tag.nom like :recherche) 
-                        )
+                    where  lower(nom) like :recherche 
+                        or lower(alias) like :recherche
+                        or id in (  select idcommande 
+                                    from tagCommande 
+                                        inner join tag on tagcommande.idtag = tag.id and tag.nom like :recherche) 
+                        
                        "
                 );                    
                         
@@ -135,9 +136,9 @@ class Commande{
             $result = $requete->fetchAll();
             // On rempli notre tableau de resultat
             foreach($result as $Commande){
-                array_push($listCommande, 
-                    new Commande($Commande['id'], $Commande['Nom'], $Commande['Alias'], $Commande['DescriptionCourte'], 
-                        $Commande['DescriptionLongue']));
+                $com = new Commande($Commande['id'], $Commande['Nom'], $Commande['Alias'], $Commande['DescriptionCourte'], $Commande['DescriptionLongue']);
+                $com->tags = Tag::fetchTagCommande($conn, $com->id);
+                array_push($listCommande, $com);
             }
         }catch(PDOException $e){
             die($e->getMessage());

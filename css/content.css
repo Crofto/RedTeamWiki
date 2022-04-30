@@ -258,3 +258,15 @@ a#navBackToTop{
     background: darkred;
 }
 
+
+.Tag {
+	color:White;
+	height: 1.5rem;
+	border-radius: 0.2rem;
+    margin-left: 1%;
+}
+
+.Center {    
+	text-align: center;
+    display: block;
+}
