@@ -1,13 +1,15 @@
 <!-- Barre de recherche --> 
 <form class="barreRecherche" method="post" id="commande">
     <input id="search" type="text" name="rechercheCommande" placeholder="Exemple: nmap">
-    <input id="submit" class = "btn" type="submit" name="isRechercheCommande" value="Chercher">
+    <input id="submit" class = "btn" type="submit" name="isRechercheCommande" value="Chercher"> 
+       
 
+    <br>
     <?php
     //On boucle sur la liste d'outil 
     foreach($outilsArray as $outil){
-        echo '<input type="checkbox" name="' . $outil->nom . '" class="checkBouttonOutil" id="' . $outil->id . '">';
-        echo '<label for="' . $outil->id . '" class="labelBouttonOutil"> ' . $outil->nom . ' </label>';
+        echo '<input type="checkbox" name="' . htmlspecialchars($outil->nom) . '" class="checkBouttonOutil" id="' . $outil->id . '">';
+        echo '<label for="' . $outil->id . '" class="labelBouttonOutil"> ' . htmlspecialchars($outil->nom) . ' </label>';
     }
     ?>
 
@@ -18,8 +20,8 @@ echo '<a href="' . base() . 'commandesInserts" > Inserer des commandes </a>';
 
 //On boucle sur la list de vocab 
 foreach($commandeArray as $cmd){
-    echo '<p Class="CommandeNomList"> <a href="' . base() . "commandesDetails/" . $cmd->id . '" >'  .  $cmd->nom . '</a></p>'. 
-        '<p Class="CommandeDescriptionList">' .  $cmd->descriptionCourte . '</p>' ; 
+    echo '<p Class="CommandeNomList"> <a href="' . base() . "commandesDetails/" . $cmd->id . '" >'  .  htmlspecialchars($cmd->nom) . '</a></p>'. 
+        '<p Class="CommandeDescriptionList">' .  htmlspecialchars($cmd->descriptionCourte) . '</p>' ; 
 }
 
 ?>

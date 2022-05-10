@@ -18,10 +18,35 @@ img{
     width:50px;
     height:50px;
 }
-#submit {
-    background-color:aliceblue ;
-    color:rgb(255, 0, 0);
-    height:3rem;
-    font-size: large;
-    border-radius: 20%;
+
+.OutilsInsert,
+.CommandeInsert,
+.VocabInsert,
+#search,
+.barreRecherche{
+	text-align: center;
+}
+:last-child
+.OutilsInsert input,
+.CommandeInsert input,
+.VocabInsert input{
+	margin-bottom: 1rem;
+	margin-top: 0.2rem;
+	color: #ddd;
+	height: 1.5rem;
+	border-radius: 0.2rem;
+	background-color: #333333;
+	border: none;
+	width: 50%;
+}
+
+.CommandeInsert select{
+	margin-bottom: 1rem;
+	margin-top: 0.2rem;
+	color: #ddd;
+	height: 10rem;
+	border-radius: 0.2rem;
+	background-color: #333333;
+	border: none;
+	width: 50%;
 }

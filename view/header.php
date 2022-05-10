@@ -4,8 +4,6 @@
 		<title>Site Wiki</title>
         <?php
             $onglet =  explode("/", $_SERVER['QUERY_STRING'])[0];
-            echo "<link rel=\"stylesheet\" href=\"" . base() . "CSS/style.css\" type=\"text/css\">";
-            echo "<link rel=\"stylesheet\" href=\"" . base() . "CSS/footer.css\" type=\"text/css\">";
             echo "<link rel=\"stylesheet\" href=\"" . base() . "CSS/header.css\" type=\"text/css\">";
         ?>
 	</head>
@@ -19,8 +17,8 @@
 			</li>
 			<li>
                 <?php
-                echo("<a class ='float_right menu " . ($onglet == "vocabulaire" ? "active" : "") . "'href = '". base() . "vocabulaire'>vocabulaire</a>");
-                ?>	
+                    echo("<a class ='float_right menu " . ($onglet == "vocabulaire" ? "active" : "") . "'href = '". base() . "vocabulaire'>vocabulaire</a>");
+                ?>
 			</li>
 			<li>
                 <?php 

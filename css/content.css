@@ -1,15 +1,23 @@
 body {
-    background: #EAEDED;
-    color: #6C7778;
     font-family: Helvetica;
     font-weight: lighter;    
     margin: 0;
 }
 .font-color {
-    color: rgb(192, 0, 0);
+    color: rgb(255, 255, 255);  
 }
+.font-color li {
+    list-style: none;
+}
+.no-style {
+    text-align: center;
+}
+
 .no-style li{
     list-style: none;
+}
+.lineStyle {
+    border: solid 1px darkred;
 }
 
 ul {
@@ -23,16 +31,16 @@ ul {
 }
 
 #pageContent {
-    margin: 0 25%;
+    margin: 0 25% 0 25%;
     max-width: none;
-    min-width: 1000px;    
+    min-width: 500px;    
 }
 
 ::placeholder {
     color:rgb(255, 255, 255);
 }
 
-input[type=text] {
+#search  {
     margin-top: 80px;
     border: 3px solid rgb(197, 197, 197);
     border-radius: 10px;
@@ -47,14 +55,10 @@ input[type=submit] {
 }
     
 .vocabNomList,
-.CommandeNomList a{
+.CommandeNomList a,
+.outilNomList a{
     color: rgb(139, 139, 139);
     font-size:large;
-}
-
-.vocabNomList{
-    color: rgb(139, 139, 139);
-    font-size: large;
 }
 
 #navFooter {
@@ -144,24 +148,23 @@ a#navBackToTop{
 
 
 .btn {
-  align-items: center;
-  background-color: #FFFFFF;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-radius: .5rem;
-  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
-  box-sizing: border-box;
-  color: rgba(0, 0, 0, 0.85);
-  cursor: pointer;
-  display: inline-flex;
-  font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
-  justify-content: center;
-  text-decoration: none;
-  transition: all 250ms;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  vertical-align: baseline;
-  width: auto;
+    align-items: center;
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: .5rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+    box-sizing: border-box;
+    color: rgba(0, 0, 0, 0.85);
+    font-family: system-ui,-apple-system,system-ui,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    justify-content: center;
+    transition: all 250ms;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: baseline;
+    width: auto;
+    height: 2.2rem;
+    font-size: 1.1rem;
 }
 
 .btn:hover,
@@ -176,13 +179,12 @@ a#navBackToTop{
 }
 
 .btn:active {
-  background-color: #F0F0F1;
-  border-color: rgba(0, 0, 0, 0.15);
-  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
-  color: rgba(0, 0, 0, 0.65);
-  transform: translateY(0);
+    background-color: #F0F0F1;
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+    color: rgba(0, 0, 0, 0.65);
+    transform: translateY(0);
 }
-
 
 .navFooterLine.navFooterLinkLine.navFooterPadItemLine{
     -webkit-text-size-adjust: 100%;
@@ -271,3 +273,4 @@ a#navBackToTop{
     height: 1px;
     background: darkred;
 }
+
