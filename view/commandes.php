@@ -16,12 +16,15 @@
 </form>
 
 <?php
-echo '<a href="' . base() . 'commandesInserts" > Inserer des commandes </a>';
+echo '<a class="Center" href="' . base() . 'commandesInserts" > <button id="submit" class = "btn"name="isRechercheCommande"> Inserer des commandes </button> </a>';
 
 //On boucle sur la list de vocab 
 foreach($commandeArray as $cmd){
-    echo '<p Class="CommandeNomList"> <a href="' . base() . "commandesDetails/" . $cmd->id . '" >'  .  htmlspecialchars($cmd->nom) . '</a></p>'. 
-        '<p Class="CommandeDescriptionList">' .  htmlspecialchars($cmd->descriptionCourte) . '</p>' ; 
+    echo '<p Class="CommandeNomList"> <a href="' . base() . "commandesDetails/" . $cmd->id . '" >'  .  htmlspecialchars($cmd->nom) . '</a> &nbsp';
+    foreach($cmd->tags as $tag){
+        echo '<button class="Tag" disabled> ' . htmlspecialchars($tag->nom) . ' </button>';
+    }
+    echo '</p><p Class="CommandeDescriptionList">' .  htmlspecialchars($cmd->descriptionCourte) . '</p>' ; 
 }
 
 ?>

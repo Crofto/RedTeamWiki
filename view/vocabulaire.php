@@ -5,7 +5,7 @@
 </form>
 
 <?php 
-echo '<a href="' . base() . 'vocabulaireInserts" > Ajouter du vocabulaire </a>'; 
+echo '<a class="Center" href="' . base() . 'vocabulaireInserts" > <button id="submit" class = "btn"name="isRechercheCommande"> Inserer du vocabulaire </button> </a>';
 
 //On boucle sur la list de vocab 
 foreach($vocabulaireArray as $vocab){

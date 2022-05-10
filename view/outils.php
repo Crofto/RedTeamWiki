@@ -5,8 +5,7 @@
 </form>
 
 <?php
-
-echo '<a href="' . base() . 'outilsInserts" > Inserer des outils </a>';
+echo '<a class="Center" href="' . base() . 'outilsInserts" > <button id="submit" class = "btn"name="isRechercheCommande"> Inserer des outils </button> </a>';
 
 //On boucle sur la liste d'outil 
 foreach($outilsArray as $outil){

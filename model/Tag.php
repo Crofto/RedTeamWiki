@@ -67,6 +67,30 @@ class Tag{
         return new Tag(0, "");
     }
 
+    /**
+     * On recupère les tags liés à une commande
+     */
+    public static function fetchTagCommande($conn, int $id)
+    {
+        $listTags = array();  
+        // Affiche le titre_ressource de l'article ainsi que sa date de création
+        try{    
+            $requete = $conn->prepare(
+                "SELECT * 
+                FROM Tag 
+                inner join TagCommande on tagcommande.idTag = tag.id
+                where tagCommande.idCommande = :id ;");
+            $requete->execute([':id' => $id]);
+            $result = $requete->fetchAll();
+        }catch(PDOException $e){
+            die($e->getMessage());
+        }
+        foreach($result as $res)    
+            array_push($listTags, new Tag($res['id'], $res['nom']));
+                
+        return $listTags;
+    }
+
     public function insertTag($conn)
     {
         try{
