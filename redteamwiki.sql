@@ -7,6 +7,12 @@
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
+--
+-- Create a database using `MYSQL_DATABASE` placeholder
+--
+CREATE DATABASE IF NOT EXISTS `Redteamwiki`;
+USE `Redteamwiki`;
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
